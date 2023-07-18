@@ -43,11 +43,11 @@ breed = filtered_df.iloc[0]['Breeds']
 st.write(f"The dog breed for name '{SelectDog}' is: {breed}")
 
 # Given Link to search
-dog_info_link = f"https://dog.ceo/dog-api/{breed}"
+dog_info_link = f"https://dog.ceo/dog-api/{SelectDog}"
 st.markdown(f"The dog breed for name '{SelectDog}' is: [{breed}]({dog_info_link})")
 
 # Retrieve random images using a dog image API
-dog_images_url = f'https://dog.ceo/api/breed/{breed}/images/random/3' 
+dog_images_url = f'https://dog.ceo/dog-api/breed/{breed}/images/random/3' 
 response = requests.get(dog_images_url)
 data = response.json()
 images = data['message']
