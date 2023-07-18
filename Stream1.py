@@ -47,7 +47,7 @@ dog_info_link = f"https://dog.ceo/dog-api/{breed}"
 st.markdown(f"The dog breed for name '{SelectDog}' is: [{breed}]({dog_info_link})")
 
 # Retrieve random images using a dog image API
-dog_images_url = f'https://dog.ceo/api/breed/{breed}/images/random/3'  # Replace with the actual dog image API URL
+dog_images_url = f'https://dog.ceo/api/breed/{breed}/images/random/3' 
 response = requests.get(dog_images_url)
 data = response.json()
 images = data['message']
