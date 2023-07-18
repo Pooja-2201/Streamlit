@@ -41,5 +41,5 @@ breed = filtered_df.iloc[0]['Breeds']
 st.write(f"The dog breed for name '{SelectDog}' is: {breed}")
 
 # Given Link to search
-dog_info_link = f"https://yourdoginfo.com/{breed}"
+dog_info_link = f"https://dog.ceo/dog-api/{breed}"
 st.markdown(f"The dog breed for name '{SelectDog}' is: [{breed}]({dog_info_link})")
