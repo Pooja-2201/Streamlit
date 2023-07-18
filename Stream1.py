@@ -39,3 +39,7 @@ SelectDog = st.selectbox("Select Dog Type", options= df['Dog'])
 filtered_df = df[df['Dog'] == SelectDog]
 breed = filtered_df.iloc[0]['Breeds']
 st.write(f"The dog breed for name '{SelectDog}' is: {breed}")
+
+# Given Link to search
+dog_info_link = f"https://yourdoginfo.com/{breed}"
+st.markdown(f"The dog breed for name '{SelectDog}' is: [{breed}]({dog_info_link})")
