@@ -1,5 +1,7 @@
 import streamlit as st
 import pandas as pd
+import requests
+import random
 
 #Set Page Title
 st.set_page_config(page_title="Login Page")
@@ -43,3 +45,13 @@ st.write(f"The dog breed for name '{SelectDog}' is: {breed}")
 # Given Link to search
 dog_info_link = f"https://dog.ceo/dog-api/{breed}"
 st.markdown(f"The dog breed for name '{SelectDog}' is: [{breed}]({dog_info_link})")
+
+# Retrieve random images using a dog image API
+dog_images_url = f'https://dog.ceo/api/breed/{breed}/images/random/3'  # Replace with the actual dog image API URL
+response = requests.get(dog_images_url)
+data = response.json()
+images = data['message']
+
+# Display random images
+for image in random.sample(images, k=min(3, len(images))):
+    st.image(image, use_column_width=True, caption="Random Dog Image")
