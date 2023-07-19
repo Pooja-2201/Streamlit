@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import random
+from PIL import Image
 
 #Set Page Title
 st.set_page_config(page_title="Login Page")
@@ -42,18 +43,21 @@ filtered_df = df[df['Dog'] == SelectDog]
 breed = filtered_df.iloc[0]['Breeds']
 st.write(f"The dog breed for name '{SelectDog}' is: {breed}")
 
-# Given Link to search
-dog_info_link = f"https://dog.ceo/dog-api/{SelectDog}"
-st.markdown(f"The dog breed for name '{SelectDog}' is: [{breed}]({dog_info_link})")
+def get_random_dog_image_url(breed):
+    url = f'https://dog.ceo/api/breed/{breed}/images/random/'
+    response = requests.get(url)
+    data = response.json()
+    return data['message']
 
-# Retrieve random images using a dog image API
-dog_images_url = f'https://dog.ceo/dog-api/breed/{SelectDog}/images/random' 
-response = requests.get(dog_images_url)
-data = response.json()
-images = data['message']
-images
+# Create a hyperlink 
+with st.container():
+    dog_info_link = 'https://dog.ceo/api/'
+    st.write("[Dog Link >](https://dog.ceo/api/)")
+
+ # Get a random dog image URL
+image_url = get_random_dog_image_url(breed)
+st.image(image_url, caption=f"Random {breed} Image", use_column_width=True)
 
 
-# Display random images
-for image in random.sample(images, k=min(3, len(images))):
-    st.image(image, use_column_width=True, caption="Random Dog Image")
+
+
