@@ -52,11 +52,11 @@ def get_random_dog_image_url(breed):
 # Create a hyperlink 
 with st.container():
     dog_info_link = 'https://dog.ceo/api/'
-    st.write("[Dog Link >](https://dog.ceo/api/)")
+    st.markdown("[Dog Link >](https://dog.ceo/api/)")("[![Dog Link](https://dog.ceo/api/)]
 
  # Get a random dog image URL
 image_url = get_random_dog_image_url(breed)
-st.image(image_url, caption=f"Random {breed} Image", use_column_width=True)
+st.image(image_url, caption="Random image", use_column_width=True, width=400)
 
 
 
